@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读取iframe里的cookie试试</title>
+</head>
+<body>
+<iframe src="" id="idIframe"></iframe>
+
+<script src="../lib/jquery/jquery-3.4.1.js"></script>
+<script>
+    $(document).ready(function () {
+        alert('1');
+        var ref = '';
+        if (document.referrer.length > 0) {
+            ref = document.referrer;
+        }
+        try {
+            if (ref.length == 0 && opener.location.href.length > 0) {
+                ref = opener.location.href;
+            }
+        } catch (e) {
+        }
+
+        $("#idIframe").attr("idIframe", ref);
+    });
+</script>
+</body>
+</html>
